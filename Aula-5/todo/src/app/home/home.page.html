@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-title>
+      TODO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item-sliding>
+      <ion-item>
+        <ion-label>Comparar pão</ion-label>
+        <ion-icon slot="start" name="radio-button-off"></ion-icon>
+      </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option (click)="apagar()">Apagar</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!--pesquisar termos usado como "fixed"-->
+  <!--Criação do botão de adição de novas tarefas-->
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="warning" (click)="showAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
