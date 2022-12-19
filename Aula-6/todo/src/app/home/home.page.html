@@ -7,17 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-item-sliding *ngFor = "let x of arrayTarefa">
-      <ion-item>
-        <ion-label>{{x.tarefa}}</ion-label>
-        <ion-icon slot="start" name="radio-button-off"></ion-icon>
+      <ion-item (click)="alterarStatus(x)">
+        <ion-label *ngIf="x.done == false" >{{x.tarefa}}</ion-label>
+        <ion-label *ngIf="x.done == true"><del>{{x.tarefa}}</del></ion-label>
+        <ion-icon slot="start" name="radio-button-off" *ngIf="x.done == false"></ion-icon>
+        <ion-icon slot="start" name="radio-button-on" *ngIf="x.done == true"></ion-icon>
       </ion-item>
     <ion-item-options side="end">
-      <ion-item-option (click)="apagar()">Apagar</ion-item-option>
-    </ion-item-options>
+      <ion-item-option (click)="apagar(x)">Apagar</ion-item-option>
+    </ion-item-options> 
   </ion-item-sliding>
-
+  <ion-title *ngIf = "arrayTarefa.length == 0" (click)="arrayParaJson()">Não há tarefas</ion-title>
   <!--pesquisar termos usado como "fixed"-->
   <!--Criação do botão de adição de novas tarefas-->
  <ion-fab vertical="bottom" horizontal="end" slot="fixed">

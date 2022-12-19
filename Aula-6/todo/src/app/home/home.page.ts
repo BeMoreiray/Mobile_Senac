@@ -7,11 +7,8 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  arrayTarefa = [
-    {tarefa: 'tomar banho'},
-    {tarefa: 'escovar os dentes'},
-    {tarefa: 'ir para escola'} 
-  ]
+  arrayTarefa = new Array();
+  
 
   constructor(private alertController: AlertController, private toastController: ToastController) {}
    async showAdd(){
@@ -46,13 +43,40 @@ export class HomePage {
       })
       toast.present();
     }else{
-      this.arrayTarefa.push({tarefa : newTask});
+      this.arrayTarefa.push({tarefa : newTask, done: false});
       
     }
   }
 
-  /*
-  apagar(elemento : string){
-    const i = this.arrayTarefa.indexOf();
-  }*/
+  apagar(task: any){
+    for(let i = 0; i < this.arrayTarefa.length; i++){
+      if(task.tarefa == this.arrayTarefa[i].tarefa){
+        this.arrayTarefa.splice(i, 1);
+      }
+    }
+  }
+  alterarStatus(task: any){
+    task.done = !task.done; 
+    /*if(task.done == false){
+      task.done = true;
+    }else{
+      task.done = false;
+    }*/
+  }
+
+  arrayParaJson(){
+    let valor = [{nome: 'carlos'}, {nome: 'josé'}];
+    let jstring = '';
+
+    jstring = '[';
+    for(let i = 0; i < valor.length; i++){
+        jstring = jstring + "{";
+        jstring = jstring + "nome";
+        jstring = jstring + valor[i].nome;
+        jstring = jstring + "}";
+    }
+    jstring = jstring + ']'
+    
+    console.log(jstring)
+  }
 }

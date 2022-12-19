@@ -46,4 +46,6 @@ export class AlertaPage implements OnInit {
     });
     mensagem.present();
   }
+
+ 
 }
