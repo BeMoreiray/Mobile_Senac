@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-searchbar animated="true" placeholder="Buscar"></ion-searchbar>
   <ion-item-sliding *ngFor = "let x of arrayTarefa">
       <ion-item (click)="alterarStatus(x)">
         <ion-label *ngIf="x.done == false" >{{x.tarefa}}</ion-label>
@@ -18,7 +19,7 @@
       <ion-item-option (click)="apagar(x)">Apagar</ion-item-option>
     </ion-item-options> 
   </ion-item-sliding>
-  <ion-title *ngIf = "arrayTarefa.length == 0" (click)="arrayParaJson">Não há tarefas</ion-title>
+  <ion-title *ngIf = "arrayTarefa.length == 0">Não há tarefas</ion-title>
   <!--pesquisar termos usado como "fixed"-->
   <!--Criação do botão de adição de novas tarefas-->
  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
